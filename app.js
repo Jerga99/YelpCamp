@@ -17,8 +17,11 @@ var commentRoutes   = require("./routes/comments"),
     authRoutes      = require("./routes/index");
     
     
-//seedDB();    
-mongoose.connect(process.env.DATABASEURL); // database connnect
+//seedDB();
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
+mongoose.connect(url);
+
+//mongoose.connect(process.env.DATABASEURL); // database connnect
 //mongoose.connect("mongodb://filip:samsung2580@ds013619.mlab.com:13619/yelpcamp");
 app.use(bodyParser.urlencoded({extended: true})); // use od body parser to get values from get req
 app.set("view engine", "ejs"); // not need use postfix
