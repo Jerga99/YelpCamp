@@ -5,11 +5,17 @@
         <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel="stylesheet" href="/stylesheets/main.css"> 
         <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,500' rel='stylesheet' type='text/css'>
+       	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+       	<link rel="stylesheet" href="/stylesheets/rating/stylesheet.css"></link>
+       	
+       	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="../js/main.js"></script>
     </head>
     <body>
         
-        <nav class="navbar navbar-default">
+        <nav id="mynavbar" class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
           <a class="navbar-brand" href="/">YelpCamp</a>
@@ -29,18 +35,17 @@
     </div>
 </nav>
 
-<div class="container">
-  <% if(error && error.length > 0){ %>
-    <div class = "alert alert-danger" role = "alert">
-        <%=error%>
-    </div>
-    <% } %>
-    <% if(success && success.length > 0){ %>
-    <div class = "alert alert-success" role = "alert">
+<% if(success && success.length > 0){ %>
+    <div class = "alert alert-success mysuccess" role = "alert">
       <%=success%>
     </div>
      <% } %>
-</div>
+
+  <% if(error && error.length > 0){ %>
+    <div class = "alert alert-danger myalert" role = "alert">
+        <%=error%>
+    </div>
+    <% } %>
 
 
 

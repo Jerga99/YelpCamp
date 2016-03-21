@@ -1,38 +1,65 @@
 <% include ../partials/header %>
 
-<div class= "container">
 
-    <header class= "jumbotron">
-          <div class="container">
-              <h1>Welcome To YelpCamp</h1>  
-              <p>View our hand-picked campgrounds from all the over world</p>
-              <p>
-                  <a class="btn btn-primary btn-large" href= "/campgrounds/new">Add new campground</a>
-              </p>
-          </div>
-    </header>
-    
-    <div class= "row">
-        <div class="col-lg-12">
-            <h3></b>Our Most Popular CampGrounds</b></h3>
+    <section id="hero" data-type="background" data-speed="2">
+		<article>
+		<div id="mycontainer" class="container clearfix">
+			
+				<h1>Welcome to YelpCamp</h1>
+<p>View Our Hand-Picked CampGrounds From All Over The World</p>
+<a class="btn btn-large btn-primary" href="campgrounds/new">Add New Campground</a>
+			 <!-- row -->
+		</div>
+		<!-- container -->
+		</article>
+	</section>
+	
+	<section id="optin">
+	<div class="container">
+		<div class=row>
+			<div class="col-sm-8">
+				<p class="lead"><strong>Subscibe to our mailing list</strong> We will send something special as a thank you.</p>
+			</div>
+			<!-- col -->
+			<div class="col-sm-4">
+			<button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">Click here to subscibe</button>
+				
+			</div>
+			<!-- col -->
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+	</section>
+
+    <div id="myrow" class= "row">
+            <div class="col-lg-12">
+                <h3></b>Our Most Popular CampGrounds</b></h3>
+            </div>
         </div>
-    </div>
+    
+    <section id="show">
+    <div class= "container camps-container">
     
      <div class= "row text-center" style = "display:flex; flex-wrap: wrap;">
         <% campgrounds.forEach(function(campground){ %>
                 <div class="col-md-3 col-sm-6"> 
-                    <div class="thumbnail">
+                    <div  class="thumbnail">
                       <img class= "showImg" src= "<%= campground.image %>">
-                        <div class="caption">
-                           <h4><%= campground.name %> </h4> 
+                        <div class="caption campground-name">
+                           <h4>|| <%= campground.name %> || </h4> 
                         </div>
                         <p>
-                            <a href= "/campgrounds/<%= campground._id %>" class= "btn btn-primary">More Info</a>
+                            <%= (campground.description).substring(0,50) %>  ...
                         </p>
+                       
+                            <a href= "/campgrounds/<%= campground._id %>" class= "btn btn-primary thumbnail-button ">Read More</a>
+                        
                     </div>
                 </div>
             <% }) %>
             </div>
 </div>
+</section
 
 <% include ../partials/footer %>

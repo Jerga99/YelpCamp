@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Campground = require("../models/campground");
+var User = require("../models/user");
 var middleware = require("../middleware"); // if its index.js its looked automaticaly
 
 //INDEX ROUTE - Show all camp grounds
@@ -21,12 +22,13 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
+    var price = req.body.price;
     
     var author = {
         id : req.user._id,                      // we can use user thanks to passport and get user when we are logged in
         username: req.user.username
     }
-    var newCampground = {name: name, image: image, description: description, author: author};
+    var newCampground = {name: name, image: image, description: description, price: price, author: author};
     
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
@@ -88,6 +90,51 @@ router.delete("/:id",middleware.checkCampgroundOwnership, function(req, res){
         }
     });
 });
+
+//ranking
+
+router.post("/:id/rank", middleware.isLoggedIn, function(req, res){
+    
+    var finalCampground;
+
+    User.findById(req.user._id).populate("rankedCamps").exec(function(err, foundUser) {
+        if(err){
+            console.log(err);
+        }   
+       
+      Campground.findById(req.params.id, function(err, foundCampground) {
+          
+          for(var i= 0; i < foundUser.rankedCamps.length; i++){
+              if(foundCampground._id.equals(foundUser.rankedCamps[i]._id)){
+                  
+                  req.flash("error", "You already ranked this camp!");
+                 res.redirect("/campgrounds/" + req.params.id ); 
+                 return;
+              }
+          }
+                  var currentRanking = 0;
+                  
+                  foundUser.rankedCamps.push(foundCampground);
+                  foundUser.save();
+                  
+                  foundCampground.nRank.push(req.body.rank);
+                  
+                  for(var i = 0; i< foundCampground.nRank.length; i ++){
+                      currentRanking = currentRanking + foundCampground.nRank[i];
+                  }
+                  
+                  foundCampground.rank = currentRanking/ foundCampground.nRank.length;
+                  
+                  foundCampground.save();
+                  
+                  res.redirect("/campgrounds/" + req.params.id );
+          
+      });
+       
+    });
+   
+});
+
 
 
 module.exports = router;

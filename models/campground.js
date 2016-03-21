@@ -4,6 +4,9 @@ var campGroundShema = new mongoose.Schema({
     name: String,
     image: String,
     description: String,
+    price: Number,
+    rank: Number,
+    nRank: [Number],
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
