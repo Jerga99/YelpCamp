@@ -2,6 +2,7 @@ var middlewareObj = {};
 
 var Comment = require("../models/comment") 
 var Campground = require("../models/campground")
+var User        = require("../models/user")
 
 //middleware
 
@@ -25,6 +26,30 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
         res.redirect("back");
     }
 }
+
+middlewareObj.checkUserPermission = function(req, res, next){
+    
+ User.findById(req.user._id, function(err, foundUser){
+    
+     if(err){
+         res.redirect("back");
+     } else {
+         if(foundUser.role=="ROLE_ADMIN"){
+             next();
+         }
+         
+         else if(foundUser.createdCamps.length > 0 && foundUser.role == "ROLE_USER"){
+             req.flash("error", "You are Allowed to Have just one campground");
+             res.redirect("back");
+         } 
+         else {
+             next();
+         }
+     }
+ });
+    
+}
+
 
 middlewareObj.checkCommentsOwnership = function(req, res, next){
      if(req.isAuthenticated()){                                                 // passport method to see if user is authenticated

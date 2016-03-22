@@ -16,9 +16,17 @@
             <img class="img-responsive" src= "<%=campground.image %>">
             <div class="caption-full">
                 <div class="mysection-showPage">
-                <h4 class ="pull-right"> $<%= campground.price %>/Night</h4>
-               <b><h4 id="campname"><a href="#"><%= campground.name %> </a></h4> </b>
-                
+                    <div class= "row">
+                <div class="col-sm-6">
+                    <b><h4 class"pull-left"><a href="#"><%= campground.name %> </a></h4> </b>
+                </div>
+               <div class="col-sm-6">
+                    <h4 class ="pull-right"> $<%= campground.price %>/Night</h4>
+                </div>
+                </div>
+                 
+                 
+                 
                 <p><%=campground.description %></p>
                 </div>
                 <p>
@@ -66,7 +74,6 @@
         </div>
         <div class="well">
             <div class="text-left">
-                
                 <h2>Comments...</h2>
                 <hr class="myhr">
                 </div>

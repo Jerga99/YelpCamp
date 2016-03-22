@@ -4,6 +4,7 @@ var campGroundShema = new mongoose.Schema({
     name: String,
     image: String,
     description: String,
+    date: String,
     price: Number,
     rank: Number,
     nRank: [Number],

@@ -44,17 +44,28 @@
      <div class= "row text-center" style = "display:flex; flex-wrap: wrap;">
         <% campgrounds.forEach(function(campground){ %>
                 <div class="col-md-3 col-sm-6"> 
+                <div class"hoverthumb">
                     <div  class="thumbnail">
                       <img class= "showImg" src= "<%= campground.image %>">
                         <div class="caption campground-name">
-                           <h4>|| <%= campground.name %> || </h4> 
+                           <h4> <%= campground.name %>  </h4> 
                         </div>
                         <p>
-                            <%= (campground.description).substring(0,50) %>  ...
+                            <%= (campground.description).substring(0,100) %>  ...
                         </p>
+                        <div class="col-md-6">
+                        <p class="pull-left"> <i><%= campground.date %></i> </p>
+                       </div>
+                       <div class="col-md-6">
+                           <% if(campground.rank != null) { %>
+                       <p class="pull-right"><i><%= campground.rank %> / 5 </i></p>
+                       <% } else { %>
+                       <p class="pull-right"><i>No Rank </i> </p>
+                       <% } %>
                        
+                       </div>
                             <a href= "/campgrounds/<%= campground._id %>" class= "btn btn-primary thumbnail-button ">Read More</a>
-                        
+                        </div>
                     </div>
                 </div>
             <% }) %>
