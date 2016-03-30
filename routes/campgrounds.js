@@ -144,6 +144,4 @@ router.post("/:id/rank", middleware.isLoggedIn, function(req, res){
    
 });
 
-
-
 module.exports = router;

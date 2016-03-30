@@ -267,8 +267,134 @@ hr.myhr {
 	padding-bottom: 0;
 }
 
+/* POST BLOG >>>>>>*/
+
+#campdescription {
+	padding-top: 80px;
+}
+
+#campdescription .post, .widget, #comments {
+	position: relative;
+	border: solid 1px #ddd;
+	background: white;
+	margin: 0 0 40px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#campdescription .post header,
+#campdescription .post .post-excerpt,
+#campdescription .post .post-body,
+#campdescription #comments .comments-wrap {
+	padding: 20px;
+}
+
+#campdescription .post header h3 {
+	margin: 0 0 15px;
+	padding: 0 0 15px;
+	border-bottom: solid 1px #ddd;
+}
+
+#campdescription .camprating {
+	background-color: #33A5B7;
+	display: block;
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    line-height: 70px;
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    position: absolute;
+    bottom: -25px;
+    left: 70%;
+    -webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	padding: 0 !important;
+	
+}
+
+#campdescription .row.comment-and-rate{
+height: 100%;
+}
 
 
+#campdescription .col-sm-4.col-rating{
+height: 100%;
+padding-top: 18px;
+}
+
+#campdescription .post header h1 {
+	margin: 0 0 15px;
+	padding: 0 0 15px;
+	border-bottom: solid 1px #ddd;
+	font-size: 24px;
+}
+
+#campdescription .post-image img {
+	height: auto;
+	max-width: 100%;
+	width: 100%;
+}
+
+#campdescription .post-details {
+	font-size: 12px;
+	width: 90%;
+}
+
+#campdescription .post-details i.fa {
+	padding-left: 10px;
+}
+
+/*COMMENTS*/
+
+#campdescription .comments h3
+{
+	padding-left: 15px;
+	margin: 0;
+}
+
+#campdescription .comment.mycomment {
+	padding: 10px;
+}
+
+#campdescription .comments .btn.btn-success
+{
+	margin-top: 10px;
+	width: 100%;
+}
+
+#campdescription .comment p {
+	padding-bottom: 0;
+	padding-top: 0;
+}
+
+#campdescription .comment i {
+	padding-left: 20px;
+	font-size:12px;
+}
+
+#campdescription .pull-right{
+	padding-right: 15px;
+
+}
+
+#campdescription .pull-right.days{
+	padding-right:  0;
+
+}
+#campdescription .col-sm-12.comments{
+	background: white;
+	border: solid 1px #ddd;
+}
+
+#campdescription .col-sm-12.comments:nth-child(2n+3){
+	background: #E6E5E5;
+	
+}
 
 
 /* RATINGS*/
@@ -312,25 +438,6 @@ fieldset, label { margin: 0; padding: 0; }
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
-.col-sm-12.col-rating
-{
-	padding-left:34%;
-	width:100%;
-	background: #848484;
-}
-
-.well{
-	padding : 0;
-}
-
-.text-left {
-	padding: 10px;
-}
-
-.col-md-12 {
-	padding: 0 40px;
-	
-}
 
 
 /* JS CLASSES*/

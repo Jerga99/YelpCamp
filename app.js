@@ -14,7 +14,9 @@ var express         = require("express"),
 //requiring routes
 var commentRoutes   = require("./routes/comments"),
     campgroundRoutes= require("./routes/campgrounds"),
-    authRoutes      = require("./routes/index");
+    authRoutes      = require("./routes/index"),
+    testRoutes      = require("./routes/test"),
+    weatherRoutes   = require("./routes/weather");
     
     
 //seedDB();
@@ -53,6 +55,8 @@ app.use(function(req,res,next){                 //to get logged user info on eve
 app.use("/", authRoutes);
 app.use( "/campgrounds",campgroundRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
+app.use("/", testRoutes);
+app.use("/weather", weatherRoutes);
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
