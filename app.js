@@ -18,6 +18,8 @@ var commentRoutes   = require("./routes/comments"),
     testRoutes      = require("./routes/test"),
     weatherRoutes   = require("./routes/weather");
     
+//MODULE
+var weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource']);
     
 //seedDB();
 var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
@@ -32,11 +34,14 @@ app.use(methodOverride("_method")); // to override POST method
 app.use(flash());
 //PASSPORT CONFIG
 
-app.use(require("express-session")({ // to hash password and use of sessions for login
+app.use(require("express-session")
+(
+    { // to hash password and use of sessions for login
     secret: "gandalf is the best",
     resave: false,
     saveUninitialized: false
-}));
+}
+));
 
 app.use(passport.initialize());
 app.use(passport.session());

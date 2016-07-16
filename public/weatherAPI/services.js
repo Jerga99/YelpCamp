@@ -6,13 +6,15 @@ weatherApp.service("cityService", function(){
     
 });
 
-weatherApp.controller('homeController', [ '$scope', 'cityService' ,function($scope,  cityService) {
+
+weatherApp.service('weatherService', ['$resource', function($resource){
     
-    $scope.city = cityService.city;
-    
-    $scope.$watch('city', function(){  //watcher
-       cityService.city = $scope.city;
+    this.getWeather = function(city, days) {
+    var weatherAPI = 
+    $resource("http://api.openweathermap.org/data/2.5/forecast/daily", {
         
-    });
+        callback: "JSON_CALLBACK" }, {get : {method: "JSONP"}});
     
+        return weatherAPI.get({q: city, cnt: days, appid: '9ba5c9375de0239373a494e10a4a10bb'});
+    };
 }]);
